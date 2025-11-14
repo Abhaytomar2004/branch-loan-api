@@ -1,10 +1,15 @@
-from flask import Flask
-
+from flask import Flask, request
+import uuid
 from .config import Config
 
 def create_app() -> Flask:
     app = Flask(__name__)
     app.config.from_object(Config())
+
+    # Add request ID for tracing
+    @app.before_request
+    def before_request():
+        request.id = str(uuid.uuid4())
 
     # Lazy imports to avoid circular deps during app init
     from .routes.health import bp as health_bp
