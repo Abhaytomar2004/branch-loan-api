@@ -45,8 +45,8 @@ jobs:
           context: .
           push: true
           tags: |
-            ghcr.io/${{ github.repository }}:latest
-            ghcr.io/${{ github.repository }}:${{ github.sha }}
+            ghcr.io/abhaytomar2004/branch-loan-api:latest
+            ghcr.io/abhaytomar2004/branch-loan-api:${{ github.sha }}
           
       - name: Verify push
         run: |
